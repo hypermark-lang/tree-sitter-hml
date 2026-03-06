@@ -1,0 +1,42 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "hml",
+      "camelcase": "Hml",
+      "title": "HML",
+      "scope": "source.hml",
+      "file-types": [
+        "hml"
+      ],
+      "injection-regex": "^hml$",
+      "class-name": "TreeSitterHml"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "HML is a small markup language that looks a bit like HTML, but uses block syntax with curly braces.",
+    "authors": [
+      {
+        "name": "Eduardo Flores",
+        "email": "edfloreshz@gmail.com",
+        "url": "https://edfloreshz.dev"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/hypermark-lang/tree-sitter-hml",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "java": false,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
