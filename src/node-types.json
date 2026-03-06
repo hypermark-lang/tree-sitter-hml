@@ -102,7 +102,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
+            "type": "tag_name",
             "named": true
           }
         ]
@@ -324,6 +324,10 @@
   },
   {
     "type": "string",
+    "named": true
+  },
+  {
+    "type": "tag_name",
     "named": true
   },
   {

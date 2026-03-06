@@ -20,7 +20,7 @@ export default grammar({
     element: ($) =>
       prec.right(
         seq(
-          field("name", $.identifier),
+          field("name", $.tag_name),
           optional(field("attributes", $.attribute_list)),
           optional(
             choice(field("content", $.inline_text), field("body", $.block)),
@@ -32,8 +32,8 @@ export default grammar({
 
     _statement: ($) =>
       choice(
-        prec(2, $.style_declaration),
-        prec(1, $.element),
+        $.style_declaration,
+        $.element,
         $.text,
       ),
 
@@ -50,13 +50,10 @@ export default grammar({
       seq(field("name", $.identifier), ":", field("value", $.value)),
 
     style_declaration: ($) =>
-      prec(
-        2,
-        seq(
-          field("property", alias($.css_property, $.identifier)),
-          ":",
-          field("value", $.value),
-        ),
+      seq(
+        field("property", alias($.css_property, $.identifier)),
+        ":",
+        field("value", $.value),
       ),
 
     text: ($) => $.string,
@@ -76,13 +73,12 @@ export default grammar({
 
     number: ($) =>
       token(
-        choice(
-          /-?\d+\.\d+%?/,
-          /-?\d+%?/,
-        ),
+        /-?(?:\d+\.\d+|\d+)(?:px|rem|em|%|vh|vw|vmin|vmax|ch|ex|cm|mm|in|pt|pc)?(?:\s+-?(?:\d+\.\d+|\d+)(?:px|rem|em|%|vh|vw|vmin|vmax|ch|ex|cm|mm|in|pt|pc)?){0,3}/,
       ),
 
     color: ($) => token(/#[0-9a-fA-F]{3,8}/),
+
+    tag_name: ($) => /[A-Z][A-Za-z0-9_-]*/,
 
     identifier: ($) => /[A-Za-z_][A-Za-z0-9_-]*/,
 
