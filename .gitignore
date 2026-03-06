@@ -46,3 +46,7 @@ zig-out/
 *.tgz
 *.zip
 *.jar
+
+# macOS
+.DS_Store
+**/.DS_Store
